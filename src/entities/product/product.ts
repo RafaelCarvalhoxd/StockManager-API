@@ -1,23 +1,23 @@
-import { CategoryType } from "./category";
+import { CategoryType } from "../category/category";
 
 export type ProductType = {
     id: string;
     name: string;
     quantity: number;
     price: number;
-    categoryId: CategoryType;
+    category: CategoryType;
 }
 
 export class Product {
     private constructor(readonly type: ProductType) {}
 
-    static create(name: string, price: number, categoryId: CategoryType) {
+    static create(name: string, price: number, category: CategoryType) {
         return new Product({
             id: crypto.randomUUID().toString(),
             name,
             quantity: 0,
             price,
-            categoryId
+            category
         });
     }
 
@@ -38,7 +38,7 @@ export class Product {
     }
 
     public get categoryId() {
-        return this.type.categoryId;
+        return this.type.category;
     }
 
     public buyProducts (quantity: number) {
