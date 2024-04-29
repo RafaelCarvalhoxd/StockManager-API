@@ -1,10 +1,12 @@
+import { Category } from "../../entities/category/category";
+
 export type BuyProductOutputDTO = {
-    productId: string;
+    id: string;
     balance: number;
 }
 
 export type SellProductOutputDTO = {
-    productId: string;
+    id: string;
     balance: number;
 }
 
@@ -27,8 +29,8 @@ export type CreateProductOutputDTO = {
 }
 
 export interface ProductService {
-    buy(productId: string, amount: number): Promise<BuyProductOutputDTO>
-    sell(productId: string, amount: number): Promise<SellProductOutputDTO>
+    buy(id: string, amount: number): Promise<BuyProductOutputDTO>
+    sell(id: string, amount: number): Promise<SellProductOutputDTO>
     list(): Promise<ListProductOutputDTO>
-    create(name: string, price: number, categoryId: string): Promise<CreateProductOutputDTO>
+    create(name: string, price: number, category: Category): Promise<CreateProductOutputDTO>
 }
