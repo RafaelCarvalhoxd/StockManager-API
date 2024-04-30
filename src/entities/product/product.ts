@@ -21,6 +21,10 @@ export class Product {
         });
     }
 
+    public static with(id: string, name: string, quantity: number, price: number, category: CategoryType) {
+        return new Product({id, name, quantity, price, category})
+    }
+
     public get id() {
         return this.type.id;
     }
