@@ -20,5 +20,9 @@ export class Category {
    public get name() {
         return this.type.name;
    }
+
+   public edit (name: string) {
+       this.type.name = name;
+   }
    
 }
