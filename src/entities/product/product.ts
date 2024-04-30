@@ -37,20 +37,26 @@ export class Product {
         return this.type.price;
     }
 
-    public get categoryId() {
+    public get category() {
         return this.type.category;
     }
 
-    public buyProducts (quantity: number) {
-        this.type.quantity += quantity;
+    public stockIn (amount: number) {
+        this.type.quantity += amount;
     }
 
-    public sellProducts (quantity: number) {
-        if (this.type.quantity < quantity) {
+    public stockOut (amount: number) {
+        if (this.type.quantity < amount) {
             throw new Error('Insufficient quantity of products in stock.');
         }
         
-        this.type.quantity -= quantity;
+        this.type.quantity -= amount;
+    }
+
+    public edit (name: string, price: number, category: CategoryType) {
+        this.type.name = name;
+        this.type.price = price;
+        this.type.category = category;
     }
 
 }
