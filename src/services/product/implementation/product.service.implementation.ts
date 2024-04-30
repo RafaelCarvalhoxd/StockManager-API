@@ -1,6 +1,6 @@
 import { Category } from "../../../entities/category/category";
 import { Product } from "../../../entities/product/product";
-import { ProductRepository } from "../../../repository/product/product.repository";
+import { ProductRepository } from "../../../repositories/product/product.repository";
 import { StockInProductOutputDTO, CreateProductOutputDTO, ListProductOutputDTO, ProductService, StockOutProductOutputDTO, FindByIdOutPutDTO } from "../product.service";
 
 export class ProductServiceImplementation implements ProductService {

@@ -1,5 +1,5 @@
 import { Category } from "../../../entities/category/category";
-import { CategoryRepository } from "../../../repository/category/category.repository";
+import { CategoryRepository } from "../../../repositories/category/category.repository";
 import { CategoryService, CreateCategoryOutputDTO, FindByIdOutPutDTO, ListCategoryOutputDTO } from "../category.service";
 
 export class CategoryServiceImplementation implements CategoryService {
