@@ -13,6 +13,10 @@ export class Category {
          });
    }
 
+   public static with(id: string, name: string) {
+       return new Category({id, name});
+   }
+
    public get id() {
     return this.type.id
    }
