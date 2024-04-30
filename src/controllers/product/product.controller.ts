@@ -2,7 +2,6 @@ import { Request, Response } from "express";
 import { ProductRepositoryPrisma } from "../../repositories/product/prisma/product.repository.prisma";
 import { prisma } from "../../util/prisma.util";
 import { ProductServiceImplementation } from "../../services/product/implementation/product.service.implementation";
-import { CategoryRepository } from "../../repositories/category/category.repository";
 import { CategoryRepositoryPrisma } from "../../repositories/category/prisma/category.repository.prisma";
 
 
