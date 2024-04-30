@@ -1,11 +1,11 @@
 import { Category } from "../../entities/category/category";
 
-export type BuyProductOutputDTO = {
+export type StockInProductOutputDTO = {
     id: string;
     balance: number;
 }
 
-export type SellProductOutputDTO = {
+export type StockOutProductOutputDTO = {
     id: string;
     balance: number;
 }
@@ -28,9 +28,23 @@ export type CreateProductOutputDTO = {
     balance: number;
 }
 
+export type FindByIdOutPutDTO = {
+    name: string;
+    price: number;
+    balance: number;
+    category: {
+        id: string;
+        name: string;
+    }
+}
+
+
 export interface ProductService {
-    buy(id: string, amount: number): Promise<BuyProductOutputDTO>
-    sell(id: string, amount: number): Promise<SellProductOutputDTO>
+    stockIn(id: string, amount: number): Promise<StockInProductOutputDTO>
+    stockOut(id: string, amount: number): Promise<StockOutProductOutputDTO>
     list(): Promise<ListProductOutputDTO>
     create(name: string, price: number, category: Category): Promise<CreateProductOutputDTO>
+    edit(id: string, name: string, price: number, category: Category): Promise<void>
+    remove(id: string): Promise<void>;
+    findById(id: string): Promise<FindByIdOutPutDTO | undefined>;
 }
