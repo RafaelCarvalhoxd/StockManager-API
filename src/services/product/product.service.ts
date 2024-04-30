@@ -2,19 +2,19 @@ import { Category } from "../../entities/category/category";
 
 export type StockInProductOutputDTO = {
     id: string;
-    balance: number;
+    quantity: number;
 }
 
 export type StockOutProductOutputDTO = {
     id: string;
-    balance: number;
+    quantity: number;
 }
 
 export type ListProductOutputDTO = {
     products: {
         id: string;
         name: string;
-        balance: number;
+        quantity: number;
         price: number;
         category: {
             id: string;
@@ -26,7 +26,7 @@ export type ListProductOutputDTO = {
 export type CreateProductOutputDTO = {
     id: string;
     name: string;
-    balance: number;
+    quantity: number;
     price: number;
     category: {
         id: string;
@@ -37,7 +37,7 @@ export type CreateProductOutputDTO = {
 export type FindByIdOutPutDTO = {
     name: string;
     price: number;
-    balance: number;
+    quantity: number;
     category: {
         id: string;
         name: string;

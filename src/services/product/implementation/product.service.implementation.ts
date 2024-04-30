@@ -19,7 +19,7 @@ export class ProductServiceImplementation implements ProductService {
             id: aProduct.id,
             name: aProduct.name,
             price: aProduct.price,
-            balance: aProduct.quantity,
+            quantity: aProduct.quantity,
             category: {
                 id: aProduct.category.id,
                 name: aProduct.category.name
@@ -42,7 +42,7 @@ export class ProductServiceImplementation implements ProductService {
 
         const output: StockInProductOutputDTO = {
             id: aProduct.id,
-            balance: aProduct.quantity,
+            quantity: aProduct.quantity,
         };
 
         return output;
@@ -62,7 +62,7 @@ export class ProductServiceImplementation implements ProductService {
 
         const output: StockOutProductOutputDTO = {
             id: aProduct.id,
-            balance: aProduct.quantity,
+            quantity: aProduct.quantity,
         };
 
         return output;
@@ -75,7 +75,7 @@ export class ProductServiceImplementation implements ProductService {
             products: aProducts.map((p) =>({
                 id: p.id,
                 name: p.name,
-                balance: p.quantity,
+                quantity: p.quantity,
                 price: p.price,
                 category: p.category
             })) 
@@ -116,7 +116,7 @@ export class ProductServiceImplementation implements ProductService {
         const output: FindByIdOutPutDTO = {
             name: aProduct.name,
             price: aProduct.price,
-            balance: aProduct.quantity,
+            quantity: aProduct.quantity,
             category: aProduct.category
         }
 

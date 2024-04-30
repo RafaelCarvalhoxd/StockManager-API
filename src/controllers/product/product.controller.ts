@@ -24,7 +24,7 @@ export class ProductController {
             id: output.id,
             name: name,
             price: price,
-            quantity: output.balance,
+            quantity: output.quantity,
             categoryId: {
                 id: categoryId,
                 name: output.category.name
@@ -58,7 +58,7 @@ export class ProductController {
 
         const data = {
             id: output.id,
-            quantity: output.balance
+            quantity: output.quantity
         }
 
         res.status(200).json(data).send();
@@ -75,7 +75,7 @@ export class ProductController {
 
         const data = {
             id: output.id,
-            balance: output.balance
+            quantity: output.quantity
         }
 
         res.status(200).json(data).send();
@@ -108,7 +108,7 @@ export class ProductController {
         const data = {
             name: output.name,
             price: output.price,
-            balance: output.balance,
+            quantity: output.quantity,
             category: {
                 id: output.category.id,
                 name: output.category.name
