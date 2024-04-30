@@ -10,7 +10,7 @@ export class ProductRepositoryPrisma implements ProductRepository {
         this.categoryRepository = categoryRepository;
     }
 
-    static build(prisma: PrismaClient, categoryRepository: CategoryRepository): ProductRepositoryPrisma {
+    public static build(prisma: PrismaClient, categoryRepository: CategoryRepository): ProductRepositoryPrisma {
         return new ProductRepositoryPrisma(prisma, categoryRepository);
     }
 
