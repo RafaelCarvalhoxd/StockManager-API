@@ -1,7 +1,7 @@
 import { Category } from "../../../entities/category/category";
 import { Product } from "../../../entities/product/product";
 import { ProductRepository } from "../../../repository/product/product.repository";
-import { BuyProductOutputDTO, CreateProductOutputDTO, ListProductOutputDTO, ProductService, SellProductOutputDTO } from "../product.service";
+import { StockInProductOutputDTO, CreateProductOutputDTO, ListProductOutputDTO, ProductService, StockOutProductOutputDTO, FindByIdOutPutDTO } from "../product.service";
 
 export class ProductServiceImplementation implements ProductService {
     private constructor(readonly repository: ProductRepository){}
@@ -23,18 +23,18 @@ export class ProductServiceImplementation implements ProductService {
         return output;
     }
 
-    public async buy(id: string, amount: number): Promise<BuyProductOutputDTO> {
+    public async stockIn (id: string, amount: number): Promise<StockInProductOutputDTO> {
         const aProduct = await this.repository.find(id);
 
         if (!aProduct) {
             throw new Error('Product not found!');
         }
 
-        aProduct.buy(amount);
+        aProduct.stockIn(amount);
 
         await this.repository.update(aProduct)
 
-        const output: BuyProductOutputDTO = {
+        const output: StockInProductOutputDTO = {
             id: aProduct.id,
             balance: aProduct.quantity,
         };
@@ -43,18 +43,18 @@ export class ProductServiceImplementation implements ProductService {
 
     }
 
-    public async sell(id: string, amount: number): Promise<SellProductOutputDTO> {
+    public async stockOut(id: string, amount: number): Promise<StockOutProductOutputDTO> {
         const aProduct = await this.repository.find(id);
 
         if (!aProduct) {
             throw new Error('Product not found!');
         }
         
-        aProduct.sell(amount)
+        aProduct.stockOut(amount)
 
         await this.repository.update(aProduct)
 
-        const output: SellProductOutputDTO = {
+        const output: StockOutProductOutputDTO = {
             id: aProduct.id,
             balance: aProduct.quantity,
         };
@@ -76,5 +76,44 @@ export class ProductServiceImplementation implements ProductService {
         }
 
         return output
+    }
+
+    public async edit(id: string, name: string, price: number, category: Category): Promise<void> {
+        const aProduct = await this.repository.find(id);
+
+        if (!aProduct) {
+            throw new Error('Product not found!');
+        }
+
+        aProduct.edit(name, price, category);
+
+        await this.repository.update(aProduct);
+    }
+
+    public async remove(id: string): Promise<void> {
+        const aProduct = await this.repository.find(id);
+
+        if (!aProduct) {
+            throw new Error('Product not found!');
+        }
+
+        await this.repository.delete(id);
+    }
+
+    public async findById(id: string): Promise<FindByIdOutPutDTO | undefined> {
+        const aProduct = await this.repository.find(id);
+
+        if (!aProduct) {
+            return undefined;
+        }
+
+        const output: FindByIdOutPutDTO = {
+            name: aProduct.name,
+            price: aProduct.price,
+            balance: aProduct.quantity,
+            category: aProduct.category
+        }
+
+        return output;
     }
 }
