@@ -38,4 +38,57 @@ export class CategoryController {
 
         res.status(200).json(data).send();
     }
+
+    public async find(req: Request, res: Response) {
+        const { id } = req.params;
+
+        const aRepository = CategoryRepositoryPrisma.build(prisma);
+        const aService = CategoryServiceImplementation.build(aRepository);
+
+        const output = await aService.findById(id);
+
+        if (!output) {
+            res.status(404).send();
+            return;
+        }
+
+        const data = {
+            name: output.name
+        }
+
+        res.status(200).json(data).send();
+    }
+
+    public async remove(req: Request, res: Response) {
+        const { id } = req.params;
+
+        const aRepository = CategoryRepositoryPrisma.build(prisma);
+        const aService = CategoryServiceImplementation.build(aRepository);
+
+        await aService.remove(id);
+
+        res.status(204).send();
+    }
+
+    public async update(req: Request, res: Response) {
+        const { id } = req.params;
+        const { name } = req.body;
+
+        const aRepository = CategoryRepositoryPrisma.build(prisma);
+        const aService = CategoryServiceImplementation.build(aRepository);
+
+        const output = await aService.edit(id, name);
+
+        if (output === undefined) {
+            res.status(404).send();
+            return;
+        }
+
+        const data = {
+            id: id,
+            name: name
+        }
+
+        res.status(200).json(data).send();
+    }
 }
