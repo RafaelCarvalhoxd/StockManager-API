@@ -1,6 +1,6 @@
 import { Category } from "../../../entities/category/category";
 import { CategoryRepository } from "../../../repository/category/category.repository";
-import { CategoryService, CreateCategoryOutputDTO, ListCategoryOutputDTO } from "../category.service";
+import { CategoryService, CreateCategoryOutputDTO, FindByIdOutPutDTO, ListCategoryOutputDTO } from "../category.service";
 
 export class CategoryServiceImplementation implements CategoryService {
     private constructor (readonly repository: CategoryRepository) {}
@@ -23,7 +23,13 @@ export class CategoryServiceImplementation implements CategoryService {
     };
 
     public async remove(id: string): Promise<void> {
-       const aCategory = await this.repository.delete(id);
+       const aCategory = await this.repository.find(id);
+
+         if (!aCategory) {
+              throw new Error('Category not found');
+         }
+
+            await this.repository.delete(id);
     }
 
     public async list(): Promise<ListCategoryOutputDTO> {
@@ -35,6 +41,32 @@ export class CategoryServiceImplementation implements CategoryService {
                 name: category.name
             }))
         };
+        return output;
+    }
+
+    public async edit(id: string, name: string): Promise<void> {
+        const aCategory = await this.repository.find(id);
+
+        if (!aCategory) {
+            throw new Error('Category not found');
+        }
+
+        aCategory.edit(name);
+
+        await this.repository.update(aCategory);
+    }
+    
+    public async findById(id: string): Promise<FindByIdOutPutDTO | undefined> {
+        const aCategory = await this.repository.find(id);
+
+        if (!aCategory) {
+            return undefined;
+        }
+
+        const output: FindByIdOutPutDTO = {
+            name: aCategory.name
+        };
+
         return output;
     }
 }
