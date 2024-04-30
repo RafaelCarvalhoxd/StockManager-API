@@ -25,7 +25,13 @@ export type ListProductOutputDTO = {
 
 export type CreateProductOutputDTO = {
     id: string;
+    name: string;
     balance: number;
+    price: number;
+    category: {
+        id: string;
+        name: string;
+    }
 }
 
 export type FindByIdOutPutDTO = {

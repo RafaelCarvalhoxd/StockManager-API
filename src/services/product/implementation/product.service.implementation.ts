@@ -17,7 +17,13 @@ export class ProductServiceImplementation implements ProductService {
 
         const output: CreateProductOutputDTO = {
             id: aProduct.id,
-            balance: aProduct.quantity
+            name: aProduct.name,
+            price: aProduct.price,
+            balance: aProduct.quantity,
+            category: {
+                id: aProduct.category.id,
+                name: aProduct.category.name
+            }
         };
 
         return output;
