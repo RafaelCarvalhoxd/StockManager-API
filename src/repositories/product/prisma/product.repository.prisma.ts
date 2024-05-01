@@ -15,8 +15,11 @@ export class ProductRepositoryPrisma implements ProductRepository {
     }
 
     public async save(product: Product): Promise<void> {
-        if (!product.category.id) {
-            throw new Error('Category not found!')
+
+        const category = await this.categoryRepository.find(product.category.id);
+
+        if (!category) {
+            throw new Error('Category not found!');
         }
 
         const data = {
@@ -53,17 +56,17 @@ export class ProductRepositoryPrisma implements ProductRepository {
                 id: product.id
             }
         })
-
+    
         if(!aProduct) {
             throw new Error('Product not found!')
         }
-
+    
         const aCategory = await this.categoryRepository.find(product.category.id);
-
+    
         if (!aCategory) {
             throw new Error('Category not found!');
         }
-
+    
         const data = {
             name: product.name,
             price: product.price,
@@ -72,7 +75,7 @@ export class ProductRepositoryPrisma implements ProductRepository {
                 connect: { id: product.category.id }
             }
         }
-
+    
         await this.prisma.product.update({
             where: {
                 id: product.id
