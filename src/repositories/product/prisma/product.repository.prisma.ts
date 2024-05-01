@@ -22,6 +22,12 @@ export class ProductRepositoryPrisma implements ProductRepository {
             throw new Error('Category not found!');
         }
 
+        const manyProducts = await this.prisma.product.findMany()
+
+        if(manyProducts.some(p => p.name === product.name)) {
+            throw new Error('Product already exists!')
+        }
+
         const data = {
             id: product.id,
             name: product.name,

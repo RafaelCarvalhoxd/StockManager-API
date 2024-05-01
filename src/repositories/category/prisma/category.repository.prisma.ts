@@ -10,6 +10,12 @@ export class CategoryRepositoryPrisma implements CategoryRepository {
     }
 
     public async save(category: Category): Promise<void> {
+        const manyCategories = await this.prisma.category.findMany()
+
+        if(manyCategories.some(c => c.name === category.name)) {
+            throw new Error('Category already exists!')
+        }
+        
         const data = {
             id: category.id,
             name: category.name
