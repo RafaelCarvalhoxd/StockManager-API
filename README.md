@@ -58,7 +58,7 @@ npm run dev
 | -------------- | -------------- | ------ | ----------------------- |
 | /products/     | Get all ideas  | GET    | None                    |
 | /products/:id | Get product by id | GET    | None                    |
-| /products/     | Add product      | POST   | { name, price, category: { id: } |
+| /products/     | Add product      | POST   | { name, price, categoryId: { id: } |
 | /products/:id/stockin    | Stock in      | POST   | { amount} |
 | /products/:id/stockout    | Stock out       | POST   | { amount } |
 | /products/:id | Update product    | PUT    | { name, price, categoryId } |
