@@ -23,8 +23,8 @@ export class ProductController {
         const data = {
             id: output.id,
             name: name,
-            price: price,
             quantity: output.quantity,
+            price: price,
             categoryId: {
                 id: categoryId,
                 name: output.category.name
@@ -107,8 +107,8 @@ export class ProductController {
 
         const data = {
             name: output.name,
-            price: output.price,
             quantity: output.quantity,
+            price: output.price,
             category: {
                 id: output.category.id,
                 name: output.category.name

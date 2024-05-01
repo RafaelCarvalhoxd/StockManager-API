@@ -36,8 +36,8 @@ export type CreateProductOutputDTO = {
 
 export type FindByIdOutPutDTO = {
     name: string;
-    price: number;
     quantity: number;
+    price: number;
     category: {
         id: string;
         name: string;

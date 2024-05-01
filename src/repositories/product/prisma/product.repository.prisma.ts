@@ -25,8 +25,8 @@ export class ProductRepositoryPrisma implements ProductRepository {
         const data = {
             id: product.id,
             name: product.name,
-            price: product.price,
             quantity: product.quantity,
+            price: product.price,
             category: {
                 connect: { id: product.category.id }
             }
@@ -45,7 +45,7 @@ export class ProductRepositoryPrisma implements ProductRepository {
             if (!category) {
                 throw new Error(`Category not found for product with ID ${product.id}`);
             }
-            return Product.with(product.id, product.name, product.price, product.quantity, category);
+            return Product.with(product.id, product.name, product.quantity, product.price, category);
         }));
 
         return products;
@@ -69,8 +69,8 @@ export class ProductRepositoryPrisma implements ProductRepository {
     
         const data = {
             name: product.name,
-            price: product.price,
             quantity: product.quantity,
+            price: product.price,
             category: {
                 connect: { id: product.category.id }
             }
@@ -101,7 +101,7 @@ export class ProductRepositoryPrisma implements ProductRepository {
             throw new Error('Category not found!');
         }
 
-        return Product.with(aProduct.id, aProduct.name, aProduct.price, aProduct.quantity, category)
+        return Product.with(aProduct.id, aProduct.name, aProduct.quantity, aProduct.price,  category)
     }
 
     public async delete(id: string): Promise<void> {

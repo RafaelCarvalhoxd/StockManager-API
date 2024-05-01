@@ -18,8 +18,8 @@ export class ProductServiceImplementation implements ProductService {
         const output: CreateProductOutputDTO = {
             id: aProduct.id,
             name: aProduct.name,
-            price: aProduct.price,
             quantity: aProduct.quantity,
+            price: aProduct.price,
             category: {
                 id: aProduct.category.id,
                 name: aProduct.category.name
@@ -115,8 +115,8 @@ export class ProductServiceImplementation implements ProductService {
 
         const output: FindByIdOutPutDTO = {
             name: aProduct.name,
-            price: aProduct.price,
             quantity: aProduct.quantity,
+            price: aProduct.price,
             category: aProduct.category
         }
 
