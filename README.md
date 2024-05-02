@@ -54,24 +54,24 @@ npm run dev
 
 ### Products
 
-| Endpoint       | Description    | Method | Body                    |
-| -------------- | -------------- | ------ | ----------------------- |
-| /products/     | Get all ideas  | GET    | None                    |
-| /products/:id | Get product by id | GET    | None                    |
-| /products/     | Add product      | POST   | { name, price, categoryId: { id: } }|
-| /products/:id/stockin    | Stock in      | POST   | { amount} |
-| /products/:id/stockout    | Stock out       | POST   | { amount } |
-| /products/:id | Update product    | PUT    | { name, price, categoryId } |
-| /products/:id | Delete product  | DELETE | None |
+| Endpoint              | Description       | Method | Body                                 |
+| --------------------- | ----------------- | ------ | ------------------------------------ |
+| /products/            | Get all ideas     | GET    | None                                 |
+| /products/:id         | Get product by id | GET    | None                                 |
+| /products/            | Add product       | POST   | { name, price, categoryId: { id } } |
+| /products/:id/stockin | Stock in          | POST   | { amount}                            |
+| /products/:id/stockout| Stock out         | POST   | { amount }                           |
+| /products/:id         | Update product    | PUT    | { name, price, categoryId: { id } } |
+| /products/:id         | Delete product    | DELETE | None                                 |
 
 ### Categories
 
-| Endpoint       | Description    | Method | Body                    |
-| -------------- | -------------- | ------ | ----------------------- |
-| /categories/     | Get all categories | GET    | None                    |
+| Endpoint        | Description         | Method | Body                    |
+| --------------- | ------------------- | ------ | ----------------------- |
+| /categories/    | Get all categories  | GET    | None                    |
 | /categories/:id | Get categorie by id | GET    | None                    |
-| /categories/     | Add product      | POST   | { name } |
-| /categories/:id | Update categorie   | PUT    | { name }|
-| /categories/:id | Delete categorie | DELETE | None |
+| /categories/    | Add product         | POST   | { name }                |
+| /categories/:id | Update categorie    | PUT    | { name }                |
+| /categories/:id | Delete categorie    | DELETE | None                    |
 
 
