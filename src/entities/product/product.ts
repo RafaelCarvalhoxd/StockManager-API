@@ -11,7 +11,7 @@ export type ProductType = {
 export class Product {
     private constructor(readonly type: ProductType) {}
 
-    static create(name: string, price: number, category: CategoryType) {
+    public static create(name: string, price: number, category: CategoryType) {
         return new Product({
             id: crypto.randomUUID().toString(),
             name,
